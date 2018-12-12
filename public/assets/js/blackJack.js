@@ -10,21 +10,25 @@ let newCard = new Cards(possibleValues[(Math.floor(Math.random() * possibleValue
 
 console.log(newCard);
 
-function Dealer(){
-    let initialDealerCard1 = new Cards(possibleValues[(Math.floor(Math.random() * possibleValues.length))], suits[(Math.floor(Math.random() * suits.length))]);
-    let initialDealerCard2 = new Cards(possibleValues[(Math.floor(Math.random() * possibleValues.length))], suits[(Math.floor(Math.random() * suits.length))]);
-
-    this.dealerCards = [initialDealerCard1, initialDealerCard2],
+function Dealer(card1, card2){
+    this.dealerCards = [card1, card2],
     this.shownCard = this.dealerCards[0],
-    this.totalValue = this.dealerCards.reduce((a, b) => a + b),
+    this.totalValue = this.dealerCards.reduce((a, b) => { return a.value + b.value }),
     this.dealerHit = function(){
-        let newCard = new Cards(possibleValues[(Math.floor(Math.random() * possibleValues.length))], suits[(Math.floor(Math.random() * suits.length))]);
-        this.dealerCards.push(newCard)
+      let newCard = new Cards(possibleValues[(Math.floor(Math.random() * possibleValues.length))], suits[(Math.floor(Math.random() * suits.length))]);
+      this.dealerCards.push(newCard)
     }
 }
 
-let dealer1 = new Dealer();
-console.log(dealer1.totalValue, dealer1.initialCards);
+let initialDealerCard1 = new Cards(possibleValues[(Math.floor(Math.random() * possibleValues.length))], suits[(Math.floor(Math.random() * suits.length))]);
+let initialDealerCard2 = new Cards(possibleValues[(Math.floor(Math.random() * possibleValues.length))], suits[(Math.floor(Math.random() * suits.length))]);
+
+let dealer1 = new Dealer(initialDealerCard1, initialDealerCard2);
+console.log(dealer1.totalValue, dealer1.dealerCards);
+
+dealer1.dealerHit();
+
+console.log(dealer1.totalValue, dealer1.dealerCards, dealer1.dealerCards.reduce((a, b) => a.value + b.value ));
 
 // if(this.totalValue <= 17 && this.dealerCards[0] === 11 || this.dealerCards[1] === 11){
 //     this.totalValue = this.totalValue - 10;
