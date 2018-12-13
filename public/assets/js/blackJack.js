@@ -33,6 +33,29 @@ dealer1.dealerHit();
 dealer1.totalValue();
 console.log(dealer1.total, dealer1.dealerCards);
 
+
+function checkDealerTotal(dealer){
+    if(dealer.total === 21){
+      return dealer.total;
+    } else if(dealer.total >= 17 && dealer.total < 22){
+      return dealer.total;
+    } else if(dealer.total < 17){
+      do {
+        dealer.dealerHit();
+        dealer.totalValue();
+      } while (dealer.total < 17)
+      return dealer.total;
+    } else if (dealer.total <= 17 && dealer.dealerCards[0] === 11 || dealer.dealerCards[1] === 11){
+      dealer.total = dealer.total - 10;
+      do {
+        dealer.dealerHit();
+        dealer.totalValue();
+        
+      } while (dealer.total < 17)
+      return dealer.total;
+    }
+}
+
 // if(this.totalValue <= 17 && this.dealerCards[0] === 11 || this.dealerCards[1] === 11){
 //     this.totalValue = this.totalValue - 10;
 //     let newCard = new Cards(possibleValues[(Math.floor(Math.random() * possibleValues.length))], suits[(Math.floor(Math.random() * suits.length))]);
