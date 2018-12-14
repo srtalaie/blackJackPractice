@@ -1,12 +1,8 @@
+let Cards = require("./card.js");
+
 //Create "deck" variables we will be using
 let possibleValues = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 let suits = ["hearts", "diamonds", "spades", "clubs"];
-
-//Create the card object to be used for both player's cards and dealer's cards
-function Cards(value, suit){
-    this.value = value,
-    this.suit = suit
-}
 
 //Create Dealer object and its various actions
 function Dealer(card1, card2){
