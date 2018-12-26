@@ -10,7 +10,8 @@ let possibleValues = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 let suits = ["hearts", "diamonds", "spades", "clubs"];
 
 //Create Dealer object and its various actions
-function Player(card1, card2){
+function Player(card1, card2, bet){
+    this.playerBet = bet,
     this.total = 0,
     this.playerCards = [card1, card2],
     //Card player will be showing
@@ -23,10 +24,31 @@ function Player(card1, card2){
       return this.total;
     }
     this.hitCounter = 0,
+    this.canDouble = true,
     this.playerHit = function(){
       this.hitCounter = 0;
       let newCard = new Cards(possibleValues[(Math.floor(Math.random() * possibleValues.length))], suits[(Math.floor(Math.random() * suits.length))]);
       this.playerCards.push(newCard)
       this.hitCounter++;
     }
+    this.playerDouble = function(){
+        if(canDouble){
+            if(this.playerCards[0].value === 11 || this.playerCards[1] === 11){
+                for(let x = 0; x < this.playerCards.length; x++){
+                    if(this.playerCards[x].value === 11){
+                        this.playerCards[x].value = 1;
+                    }
+                }
+            }
+            this.playerBet = bet * 2;
+            this.playerHit();
+        }
+        this.canDouble = false;
+    }
   }
+
+//Intialize a new dealer
+let initialPlayerCard1 = new Cards(possibleValues[(Math.floor(Math.random() * possibleValues.length))], suits[(Math.floor(Math.random() * suits.length))]);
+let initialPlayerCard2 = new Cards(possibleValues[(Math.floor(Math.random() * possibleValues.length))], suits[(Math.floor(Math.random() * suits.length))]);
+
+let player1 = new Player(initialPlayerCard1, initialPlayerCard2, 10);
