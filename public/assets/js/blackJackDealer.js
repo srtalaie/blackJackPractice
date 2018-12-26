@@ -45,40 +45,42 @@ function checkDealerTotal(dealer){
   } else if(dealer.total >= 17 && dealer.total < 22){
     return dealer.total;
   } else if(dealer.total < 17){
-    let i = 2;
+    let i = 0;
     do {
       dealer.dealerHit();
       dealer.totalValue();
-      if(dealer.dealerCards[i].value === 11 && dealer.total >= 22){
-        dealer.dealerCards[i].value = 1;
-        dealer.totalValue();
-        i++;
-      } else {
-        dealer.totalValue();
+      for(let x = 0; x < dealer.dealerCards.length; x++){
+        if(dealer.dealerCards[x].value === 11 && dealer.total >= 22){
+          dealer.dealerCards[x].value = 1;
+          dealer.totalValue();
+        } else {
+          dealer.totalValue();
+        }
       }
+      i++;
     } while (dealer.total < 17)
     return dealer.total;
-    i = 2;
+    i = 0;
   } else if(dealer.total <= 17 && dealer.dealerCards[0] === 11 || dealer.dealerCards[1] === 11){
     let i = 2;
     for(let x = 0; x < dealer.dealerCards.length; x++){
       if(dealer.dealerCards[x].value === 11){
         dealer.dealerCards[x].value = 1;
         dealer.totalValue();
-      } else {
-        return;
       }
     }
     do {
       dealer.dealerHit();
       dealer.totalValue();
-      if(dealer.dealerCards[i].value === 11 && dealer.total >= 22){
-        dealer.dealerCards[i].value = 1;
-        dealer.totalValue();
-        i++;
-      } else {
-        dealer.totalValue();
+      for(let x = 0; x < dealer.dealerCards.length; x++){
+        if(dealer.dealerCards[x].value === 11 && dealer.total >= 22){
+          dealer.dealerCards[x].value = 1;
+          dealer.totalValue();
+        } else {
+          dealer.totalValue();
+        }
       }
+      i++;
     } while (dealer.total < 17)
     return dealer.total;
     i = 2;
