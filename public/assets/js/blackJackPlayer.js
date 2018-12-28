@@ -48,6 +48,7 @@ function Player(card1, card2, bet){
         this.canDouble = false;
         }
   }
+}
 
 //Intialize a new dealer
 let initialPlayerCard1 = new Cards(possibleValues[(Math.floor(Math.random() * possibleValues.length))], suits[(Math.floor(Math.random() * suits.length))]);
