@@ -33,18 +33,20 @@ function Player(card1, card2, bet){
     }
     this.playerDouble = function(){
         if(canDouble){
-            if(this.playerCards[0].value === 11 || this.playerCards[1] === 11){
-                for(let x = 0; x < this.playerCards.length; x++){
-                    if(this.playerCards[x].value === 11){
-                        this.playerCards[x].value = 1;
-                    }
-                }
-            }
             this.playerBet = bet * 2;
-            this.playerHit();
-        }
+
+            if(this.playerCards[0].value === 11 || this.playerCards[1] === 11){
+                this.playerHit()
+                this.totalValue();
+                this.total = this.total - 10;
+            
+            } else {
+                this.playerHit();
+                this.totalValue();
+            }
+
         this.canDouble = false;
-    }
+        }
   }
 
 //Intialize a new dealer
