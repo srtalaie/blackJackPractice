@@ -81,6 +81,3 @@ function checkDealerTotal(dealer){
     i = 2;
   }
 }
-
-
-console.log(checkDealerTotal(dealer1), dealer1.hitCounter, dealer1.dealerCards)

@@ -82,9 +82,6 @@ function checkDealerTotal(dealer){
     i = 2;
   }
 }
-
-
-console.log(checkDealerTotal(dealer1), dealer1.hitCounter, dealer1.dealerCards)
 },{"./blackJackDealer":2,"./blackJackPlayer":3,"./card":4}],2:[function(require,module,exports){
 let Cards = require("./card.js");
 
