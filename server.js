@@ -19,6 +19,22 @@ app.get('/styles', function(req, res){
     res.sendFile(path.join(__dirname, "./public/assets/css/style.css"));
 });
 
+app.get('/cards', function(req, res){
+    res.sendFile(path.join(__dirname, "./public/assets/js/card.js"));
+});
+
+app.get('/blackjackdealer', function(req, res){
+    res.sendFile(path.join(__dirname, "./public/assets/js/blackJackDealer.js"));
+});
+
+app.get('/blackjackplayer', function(req, res){
+    res.sendFile(path.join(__dirname, "./public/assets/js/blackJackPlayer.js"));
+});
+
+app.get('/blackjack', function(req, res){
+    res.sendFile(path.join(__dirname, "./public/assets/js/blackJack.js"));
+});
+
 // Starts the server to begin listening
 // =============================================================
 app.listen(PORT, function() {
