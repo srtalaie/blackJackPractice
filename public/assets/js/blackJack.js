@@ -1,9 +1,9 @@
-let Cards = require("/cards");
-let Dealer = require("/blackjackdealer");
-let Player = require("/blackjackplayer");
+let Cards = require("./card");
+let Dealer = require("./blackJackDealer");
+let Player = require("./blackJackPlayer");
 
-$("#btn").on('Click', function(){
-    $("#dealer").html(`<h3>Hey Whassup?</h3>`);
+$("#btn").on('click', function(){
+    console.log("It works");
 });
 
 //Create "deck" variables we will be using
