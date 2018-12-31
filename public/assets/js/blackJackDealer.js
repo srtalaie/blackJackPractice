@@ -1,10 +1,5 @@
 let Cards = require("./card.js");
 
-// function Cards(value, suit){
-//   this.value = value,
-//   this.suit = suit
-// }
-
 //Create "deck" variables we will be using
 let possibleValues = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 let suits = ["hearts", "diamonds", "spades", "clubs"];
