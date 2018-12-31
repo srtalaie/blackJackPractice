@@ -2,20 +2,30 @@ let Cards = require("./card");
 let Dealer = require("./blackJackDealer");
 let Player = require("./blackJackPlayer");
 
-$("#btn").on('click', function(){
-    console.log("It works");
+//Create "deck" variables we will be using
+const possibleValues = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+const suits = ["hearts", "diamonds", "spades", "clubs"];
+
+
+
+//Page Load
+$(document).on('ready', function(){
+  //Intialize a new dealer
+  let initialDealerCard1 = new Cards(possibleValues[(Math.floor(Math.random() * possibleValues.length))], suits[(Math.floor(Math.random() * suits.length))]);
+  let initialDealerCard2 = new Cards(possibleValues[(Math.floor(Math.random() * possibleValues.length))], suits[(Math.floor(Math.random() * suits.length))]);
+
+  let dealer = new Dealer(initialDealerCard1, initialDealerCard2);
+
+  //Intialize a new player
+  let initialPlayerCard1 = new Cards(possibleValues[(Math.floor(Math.random() * possibleValues.length))], suits[(Math.floor(Math.random() * suits.length))]);
+  let initialPlayerCard2 = new Cards(possibleValues[(Math.floor(Math.random() * possibleValues.length))], suits[(Math.floor(Math.random() * suits.length))]);
+
+  let bet = $('#player-bet').val();
+
+  let player = new Player(initialPlayerCard1, initialPlayerCard2, bet);
 });
 
-//Create "deck" variables we will be using
-let possibleValues = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
-let suits = ["hearts", "diamonds", "spades", "clubs"];
-
-//Intialize a new dealer
-let initialDealerCard1 = new Cards(possibleValues[(Math.floor(Math.random() * possibleValues.length))], suits[(Math.floor(Math.random() * suits.length))]);
-let initialDealerCard2 = new Cards(possibleValues[(Math.floor(Math.random() * possibleValues.length))], suits[(Math.floor(Math.random() * suits.length))]);
-
-let dealer1 = new Dealer(initialDealerCard1, initialDealerCard2);
-
+//Functions
 //Function to check dealer's total and execute various dealer actions based on that total
 function checkDealerTotal(dealer){
   dealer.totalValue();
