@@ -5,7 +5,7 @@ let possibleValues = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 let suits = ["hearts", "diamonds", "spades", "clubs"];
 
 //Create Dealer object and its various actions
-function Player(card1, card2, bet){
+function Player(card1, card2){
     this.playerBet = bet,
     this.total = 0,
     this.playerCards = [card1, card2],
@@ -28,8 +28,6 @@ function Player(card1, card2, bet){
     }
     this.playerDouble = function(){
         if(canDouble){
-            this.playerBet = bet * 2;
-
             if(this.playerCards[0].value === 11 || this.playerCards[1] === 11){
                 this.playerHit()
                 this.totalValue();
