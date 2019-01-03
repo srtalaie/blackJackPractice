@@ -6,7 +6,6 @@ let suits = ["hearts", "diamonds", "spades", "clubs"];
 
 //Create Dealer object and its various actions
 function Player(card1, card2){
-    this.playerBet = bet,
     this.total = 0,
     this.playerCards = [card1, card2],
     //Card player will be showing
