@@ -8,9 +8,22 @@ const suits = ["hearts", "diamonds", "spades", "clubs"];
 
 
 
-//Page Load
-$(document).on('ready', function(){
+//Game Start
+$("#start").on('click', function(){
+  //Intialize a new dealer
+  let initialDealerCard1 = new Cards(possibleValues[(Math.floor(Math.random() * possibleValues.length))], suits[(Math.floor(Math.random() * suits.length))]);
+  let initialDealerCard2 = new Cards(possibleValues[(Math.floor(Math.random() * possibleValues.length))], suits[(Math.floor(Math.random() * suits.length))]);
 
+  let dealer = new Dealer(initialDealerCard1, initialDealerCard2);
+
+  //Intialize a new player
+  let initialPlayerCard1 = new Cards(possibleValues[(Math.floor(Math.random() * possibleValues.length))], suits[(Math.floor(Math.random() * suits.length))]);
+  let initialPlayerCard2 = new Cards(possibleValues[(Math.floor(Math.random() * possibleValues.length))], suits[(Math.floor(Math.random() * suits.length))]);
+
+  let player = new Player(initialPlayerCard1, initialPlayerCard2);
+
+  $('#player').html(`<p>${player.playerCards[0]}</p><p>${player.playerCards[1]}</p>`);
+  $('#dealer').html(`<p>${dealer.dealerCards[0]}</p><p>${dealer.dealerCards[1]}</p>`);
 });
 
 //Functions
@@ -78,19 +91,4 @@ function checkDealerTotal(dealer){
     return dealer.total;
     i = 2;
   }
-}
-
-//Function to start the game
-function gameStarter(){
-  //Intialize a new dealer
-  let initialDealerCard1 = new Cards(possibleValues[(Math.floor(Math.random() * possibleValues.length))], suits[(Math.floor(Math.random() * suits.length))]);
-  let initialDealerCard2 = new Cards(possibleValues[(Math.floor(Math.random() * possibleValues.length))], suits[(Math.floor(Math.random() * suits.length))]);
-
-  let dealer = new Dealer(initialDealerCard1, initialDealerCard2);
-
-  //Intialize a new player
-  let initialPlayerCard1 = new Cards(possibleValues[(Math.floor(Math.random() * possibleValues.length))], suits[(Math.floor(Math.random() * suits.length))]);
-  let initialPlayerCard2 = new Cards(possibleValues[(Math.floor(Math.random() * possibleValues.length))], suits[(Math.floor(Math.random() * suits.length))]);
-
-  let player = new Player(initialPlayerCard1, initialPlayerCard2);
 }
