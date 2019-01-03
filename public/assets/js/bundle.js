@@ -9,8 +9,8 @@ const suits = ["hearts", "diamonds", "spades", "clubs"];
 
 
 
-//Page Load
-$(document).on('ready', function(){
+//Game Start
+$("#start").on('click', function(){
   //Intialize a new dealer
   let initialDealerCard1 = new Cards(possibleValues[(Math.floor(Math.random() * possibleValues.length))], suits[(Math.floor(Math.random() * suits.length))]);
   let initialDealerCard2 = new Cards(possibleValues[(Math.floor(Math.random() * possibleValues.length))], suits[(Math.floor(Math.random() * suits.length))]);
@@ -21,9 +21,10 @@ $(document).on('ready', function(){
   let initialPlayerCard1 = new Cards(possibleValues[(Math.floor(Math.random() * possibleValues.length))], suits[(Math.floor(Math.random() * suits.length))]);
   let initialPlayerCard2 = new Cards(possibleValues[(Math.floor(Math.random() * possibleValues.length))], suits[(Math.floor(Math.random() * suits.length))]);
 
-  let bet = $('#player-bet').val();
+  let player = new Player(initialPlayerCard1, initialPlayerCard2);
 
-  let player = new Player(initialPlayerCard1, initialPlayerCard2, bet);
+  $('#player').html(`<p>${player.playerCards[0]}</p><p>${player.playerCards[1]}</p>`);
+  // $('#dealer').html(`<p>${dealer.dealerCards[0]}</p><p>${dealer.dealerCards[1]}</p>`);
 });
 
 //Functions
@@ -130,7 +131,7 @@ let possibleValues = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 let suits = ["hearts", "diamonds", "spades", "clubs"];
 
 //Create Dealer object and its various actions
-function Player(card1, card2, bet){
+function Player(card1, card2){
     this.playerBet = bet,
     this.total = 0,
     this.playerCards = [card1, card2],
@@ -153,8 +154,6 @@ function Player(card1, card2, bet){
     }
     this.playerDouble = function(){
         if(canDouble){
-            this.playerBet = bet * 2;
-
             if(this.playerCards[0].value === 11 || this.playerCards[1] === 11){
                 this.playerHit()
                 this.totalValue();
