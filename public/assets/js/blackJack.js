@@ -22,8 +22,7 @@ $("#start").on('click', function(){
 
   let player = new Player(initialPlayerCard1, initialPlayerCard2);
 
-  $('#player').html(`<p>${player.playerCards[0]}</p><p>${player.playerCards[1]}</p>`);
-  // $('#dealer').html(`<p>${dealer.dealerCards[0]}</p><p>${dealer.dealerCards[1]}</p>`);
+  $('.player').html(`<p>${player.playerCards[0].value} of ${player.playerCards[0].suit}</p><p>${player.playerCards[1].value} of ${player.playerCards[1].suit}</p>`);
 });
 
 //Functions
