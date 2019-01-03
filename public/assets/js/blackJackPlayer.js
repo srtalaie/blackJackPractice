@@ -42,3 +42,5 @@ function Player(card1, card2){
         }
   }
 }
+
+module.exports = Player;
