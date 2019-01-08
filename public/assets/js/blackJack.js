@@ -7,9 +7,7 @@ const possibleValues = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 const suits = ["hearts", "diamonds", "spades", "clubs"];
 
 
-
-//Game Start
-$("#start").on('click', function(){
+$(document).ready(function(){
   //Intialize a new dealer
   let initialDealerCard1 = new Cards(possibleValues[(Math.floor(Math.random() * possibleValues.length))], suits[(Math.floor(Math.random() * suits.length))]);
   let initialDealerCard2 = new Cards(possibleValues[(Math.floor(Math.random() * possibleValues.length))], suits[(Math.floor(Math.random() * suits.length))]);
@@ -22,7 +20,20 @@ $("#start").on('click', function(){
 
   let player = new Player(initialPlayerCard1, initialPlayerCard2);
 
-  $('.player').html(`<p>${player.playerCards[0].value} of ${player.playerCards[0].suit}</p><p>${player.playerCards[1].value} of ${player.playerCards[1].suit}</p>`);
+  //Game Start
+  $("#start").on('click', function(){
+    $('.player').html(`<p>${player.playerCards[0].value} of ${player.playerCards[0].suit}</p><p>${player.playerCards[1].value} of ${player.playerCards[1].suit}</p>`);
+  });
+
+  //Hit button
+  $('#player-hit').on('click', function(){
+    player.playerHit();
+    $('.player').html(` `);
+    player.playerCards.forEach( card => {
+      $('.player').append(`<p>${card.value} of ${card.suit}</p>`);
+    });
+  });
+
 });
 
 //Functions
