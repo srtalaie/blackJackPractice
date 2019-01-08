@@ -34,6 +34,12 @@ $(document).ready(function(){
     });
   });
 
+  //Stand button
+  $('#player-stand').on('click', function(){
+    player.totalValue();
+    $('.player-total').html(`<p>Player Total: ${player.total}</p>`);
+    $('.dealer').html(`<p>${dealer.dealerCards[0].value} of ${dealer.dealerCards[0].suit}</p><p>${dealer.dealerCards[1].value} of ${dealer.dealerCards[1].suit}</p>`);
+  });
 });
 
 //Functions
