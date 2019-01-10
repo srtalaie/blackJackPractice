@@ -39,7 +39,10 @@ $(document).ready(function(){
   $('#player-stand').on('click', function(){
     player.totalValue();
     $('.player-total').html(`<p>Player Total: ${player.total}</p>`);
-    $('.dealer').html(`<p>${dealer.dealerCards[0].value} of ${dealer.dealerCards[0].suit}</p><p>${dealer.dealerCards[1].value} of ${dealer.dealerCards[1].suit}</p>`);
+    $('.dealer-total').html(`<p>Dealer Total: ${checkDealerTotal(dealer)}</p>`);
+    dealer.dealerCards.forEach( card => {
+      $('.dealer').append(`<p>${card.value} of ${card.suit}</p>`);
+    });
   });
 });
 
